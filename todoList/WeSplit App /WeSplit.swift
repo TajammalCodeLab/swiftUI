@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct WeSplit: View {
+    @State var selectedTab: Tabs = .contact
+    
     var body: some View {
         NavigationStack {
             Form{
@@ -17,9 +19,19 @@ struct WeSplit: View {
                 Text("Software Updates")
                 Text("Software Information")
                 Text("Contact Us")
+                
+                Section{
+                    Text("Software Updates")
+                    Text("Software Information")
+                    Text("Contact Us")
+                }
             }
+            
         }
+        
+        CustomTabBar(selectedTab: $selectedTab)
     }
+    
 }
 
 #Preview {
