@@ -55,11 +55,12 @@ struct WeSplit: View {
                     }
                 }
                 Section("Video # 7"){
-                    Picker("Select a student", selection: $defualtSelectedname){
+                    Picker("", selection: $defualtSelectedname){
                      ForEach(students, id: \.self){
                             Text($0)
                         }
                     }
+                    .pickerStyle(SegmentedPickerStyle())
                 }
             }
             .navigationTitle("SwiftUI")

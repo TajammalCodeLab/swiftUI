@@ -69,7 +69,7 @@ struct CustomTabBar: View {
             .tint(Color.secondary)
             
             
-            //MARK: Button 2
+            //MARK: Button 3
             Button{
                 selectedTab = .contact
             } label: {
