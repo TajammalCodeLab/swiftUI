@@ -10,10 +10,11 @@ import SwiftUI
 struct TaskView: View {
     var body: some View {
         content
+            
     }
     
     //MARK: Variables
-    @State var searchText: String = ""
+    @State var searchText: String = "asdasd"
     
 }
 
@@ -25,21 +26,23 @@ extension TaskView{
     
     @ViewBuilder
     var content: some View{
-        TopBar
-        SegmentCntroll
-        SearchBar
-        ScrollView{
-            SegmentControlViewm(details: MaintenanceDetails(
-                make: "Toyota Camry (2020)",
-                roNumber: "70990",
-                vin: "70990",
-                warningLights: "Yes",
-                insurance: "No",
-                malfunction: "No"
-            ))
+        VStack {
+            TopBar
+            SegmentCntroll
+            SearchBar
+            ScrollView{
+                SegmentControlViewm(details: MaintenanceDetails(
+                    make: "Toyota Camry (2020)",
+                    roNumber: "70990",
+                    vin: "70990",
+                    warningLights: "Yes",
+                    insurance: "No",
+                    malfunction: "No"
+                ))
+            }
+            CustomTabBar(selectedTab: .constant(.contact))
         }
-        CustomTabBar(selectedTab: .constant(.contact))
-        
+        .background(Color.black.opacity(0.9))
     }
     
     // MARK: TopBar
@@ -47,8 +50,10 @@ extension TaskView{
     private var TopBar: some View{
         HStack{
             Spacer()
-            Text("Todo List")
+            Text("All Tasks")
+                .font(.system(size: 20))
                 .fontWeight(.medium)
+                .foregroundStyle(.white)
             Spacer()
                 .frame(width: 80)
             Button(action: {
@@ -82,6 +87,7 @@ extension TaskView{
             }
             TextField("Search", text: $searchText)
                 .padding()
+                .foregroundStyle(.white)
             
         }//Hstack
         .background(Color.gray.opacity(0.1))

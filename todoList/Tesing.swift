@@ -2,7 +2,7 @@ import SwiftUI
 
 struct SegmentControlViewm: View {
     
-    let items2 = Array(1...10).map {
+    let items2 = Array(1...4).map {
         ("front_ID\($0)", "Information \($0)")
     }
     let details: MaintenanceDetails
@@ -11,12 +11,13 @@ struct SegmentControlViewm: View {
         
             LazyVStack(spacing: 10) {
                 ForEach(items2, id: \.0) { item in
-                    HStack {
+                    HStack(spacing: 10) {
                         Image("testImage")
                             .resizable()
                             .aspectRatio(contentMode: .fill)
-                            .frame(width: 83, height: 100)
+                            .frame(width: 87, height: 110)
                             .cornerRadius(10)
+                        
                         
                         VStack(alignment: .leading){
                             Text("Oil Change")

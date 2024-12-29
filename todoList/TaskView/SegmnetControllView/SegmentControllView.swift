@@ -22,7 +22,7 @@ struct SegmentControllView: View {
                 }) {
                     Text(titles[index])
                         .font(.system(size: 14, weight: .medium))
-                        .foregroundColor(selectedIndex == index ? .white : .black)
+                        .foregroundColor(.white)
                         .padding()
                         .frame(width: 110, height: 55)
                         .background(selectedIndex == index ? Color.red : Color.clear)
