@@ -28,16 +28,7 @@ extension TaskView{
         TopBar
         SegmentCntroll
         SearchBar
-        ScrollView{
-            SegmentControlViewm(details: MaintenanceDetails(
-                make: "Toyota Camry (2020)",
-                roNumber: "70990",
-                vin: "70990",
-                warningLights: "Yes",
-                insurance: "No",
-                malfunction: "No"
-            ))
-        }
+        AllTaskScroll
         CustomTabBar(selectedTab: .constant(.contact))
         
     }
@@ -47,8 +38,11 @@ extension TaskView{
     private var TopBar: some View{
         HStack{
             Spacer()
-            Text("Todo List")
+            Text("All Tasks")
+                .italic()
                 .fontWeight(.medium)
+                .font(.system(size: 20))
+            
             Spacer()
                 .frame(width: 80)
             Button(action: {
@@ -90,6 +84,17 @@ extension TaskView{
         
     }//View
     // MARK: Active Tasks
-    
-    
+    @ViewBuilder
+    private var AllTaskScroll: some View{
+        ScrollView{
+            AllTaskScrollView(details: MaintenanceDetails(
+                make: "Toyota Camry (2020)",
+                roNumber: "70990",
+                vin: "70990",
+                warningLights: "Yes",
+                insurance: "No",
+                malfunction: "No"
+            ))
+        }
+    }
 }// Extension

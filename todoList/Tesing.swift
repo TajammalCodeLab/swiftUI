@@ -1,75 +1,183 @@
 import SwiftUI
 
 struct SegmentControlViewm: View {
-    
-    let items2 = Array(1...10).map {
-        ("front_ID\($0)", "Information \($0)")
-    }
-    let details: MaintenanceDetails
-    
     var body: some View {
-        
-            LazyVStack(spacing: 10) {
-                ForEach(items2, id: \.0) { item in
-                    HStack {
-                        Image("testImage")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 83, height: 100)
-                            .cornerRadius(10)
-                        
-                        VStack(alignment: .leading){
-                            Text("Oil Change")
-                                .font(.system(size: 15))
-                                .fontWeight(.medium)
-                                .foregroundStyle(.white)
-                            
-                            DetailRow(label: "Make:", value: details.make)
-                            
-                            // MARK: line
-                            HStack(spacing:2){
-                                ForEach(0..<35) { index in
-                                    Rectangle()
-                                        .frame(width: 5, height: 2)
-                                        .opacity(0.6)
-                                        .foregroundStyle(.white)
-                                }
-                            }
-                            
-                            
-                            // MARK: details
-                            VStack(alignment: .leading, spacing: 4) {
-                                HStack {
-                                    DetailRow(label: "Make:", value: details.make)
-                                    Spacer()
-                                    DetailRow(label: "Ro#:", value: details.roNumber)
-                                }
-                                HStack {
-                                    DetailRow(label: "VIN#:", value: details.vin)
-                                    Spacer()
-                                    DetailRow(label: "Warning Lights:", value: details.warningLights)
-                                }
-                                HStack {
-                                    DetailRow(label: "Insurance:", value: details.insurance)
-                                    Spacer()
-                                    DetailRow(label: "Malfunction:", value: details.malfunction)
-                                }
-                            }
-                            
-                            
-                        }
-                    } // hstak
-                    .frame(width: 345,height: 118)
-                    .padding()
-                    .background(Color.black)
-                    .cornerRadius(10)
-                }// for each
-            } // lazyvstack
-        
+        content
     }
     
 }
-struct DetailRow: View {
+extension SegmentControlViewm {
+    
+    @ViewBuilder
+    var content: some View{
+        VStack {
+            TopBar
+            AboutTask
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity,alignment: .top)
+        .background(Color.black.opacity(0.6))
+        CustomTabBar(selectedTab: .constant(.contact))
+        
+        
+    }
+    
+    // MARK: TopBar
+    @ViewBuilder
+    private var TopBar: some View{
+        HStack{
+            Spacer()
+            Text("Task Details")
+                .italic()
+                .fontWeight(.medium)
+                .font(.system(size: 20))
+            Spacer()
+                .frame(width: 90)
+            Button(action: {
+                
+            }){
+                Image("chatImage")
+                    .resizable()
+                    .frame(width: 40, height: 40)
+            }
+        }.padding(.trailing)
+    }
+    
+    // MARK: TopBar
+    @ViewBuilder
+    private var AboutTask: some View{
+        VStack(alignment: .leading){
+            HStack(alignment:.top){
+                Rectangle()
+                    .frame(width: 70, height: 70)
+                    .opacity(0.2)
+                    .cornerRadius(20)
+                    .overlay {
+                        Image("testImage")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                    }
+                VStack(alignment: .leading){
+                    Text("Brake Inspection and Repair")
+                        .foregroundStyle(.white)
+                        .fontWeight(.medium)
+                        .font(.system(size: 18))
+                    Text("Task Description")
+                        .foregroundStyle(.black.opacity(0.8))
+                        .font(.system(size: 11))
+                }
+                Spacer()
+                Text("In Progress")
+                    .foregroundStyle(.orange)
+                    .padding(10)
+                    .fontWeight(.medium)
+                    .font(.system(size: 16))
+                    .background(.orange.opacity(0.3))
+                    .cornerRadius(12)
+                
+            }
+            .padding()
+            Divider()
+                .frame(minHeight: 2)
+                .overlay(Color.black.opacity(0.2))
+                .padding(.leading)
+                .padding(.trailing)
+            ScrollView{
+                VStack(alignment: .leading){
+                    Text("Task Details")
+                        .fontWeight(.regular)
+                        .foregroundStyle(.white)
+                        .font(.system(size: 16))
+                    DetailTaskRow(label: "Value", value: "procaolmalnas")
+                    DetailTaskRow(label: "Value", value: "300")
+                    Text("SwiftUI has a number of styling protocols that allow us to define common styling for views such as Button, ProgressView, Toggle, and more. They all work by allowing us to centralize any number of modifiers that get a view looking the way we want it, and provide modifiers that let us apply the full set of customizations in a single line.")
+                        .foregroundStyle(.white)
+                        .font(.system(size: 10))
+                    DetailTaskRow(label: "Value", value: "Vale")
+                    Text("Task Details")
+                        .fontWeight(.regular)
+                        .foregroundStyle(.white)
+                        .font(.system(size: 16))
+                    DetailTaskRow(label: "Value", value: "Vale")
+                    DetailTaskRow(label: "Value", value: "Vale")
+                    DetailTaskRow(label: "Value", value: "Vale")
+                    DetailTaskRow(label: "Value", value: "Vale")
+                    Text("Task Details")
+                        .fontWeight(.regular)
+                        .foregroundStyle(.white)
+                        .font(.system(size: 16))
+                    DetailTaskRow(label: "Value", value: "Vale")
+                    DetailTaskRow(label: "Value", value: "Vale")
+                    DetailTaskRow(label: "Value", value: "Vale")
+                    Text("Task Details")
+                        .fontWeight(.regular)
+                        .foregroundStyle(.white)
+                        .font(.system(size: 16))
+                    DetailTaskRow(label: "Value", value: "Vale")
+                    DetailTaskRow(label: "Value", value: "Vale")
+                    DetailTaskRow(label: "Value", value: "Vale")
+                    Text("Task Details")
+                        .fontWeight(.regular)
+                        .foregroundStyle(.white)
+                        .font(.system(size: 16))
+                    ScrollView(.horizontal) {
+                        HStack{
+                            Image("testImage")
+                                .resizable()
+                                .frame(width: 150, height: 150)
+                                .overlay {
+                                    Rectangle()
+                                        .fill(Color.black.opacity(0.5))
+                                }
+                            Image("testImage")
+                                .resizable()
+                                .frame(width: 150, height: 150)
+                                .overlay {
+                                    Rectangle()
+                                        .fill(Color.black.opacity(0.5))
+                                }
+                            Image("testImage")
+                                .resizable()
+                                .frame(width: 150, height: 150)
+                                .overlay {
+                                    Rectangle()
+                                        .fill(Color.black.opacity(0.5))
+                                }
+                            
+                        }
+                    }
+                    Spacer()
+                    Text("Task Details")
+                        .fontWeight(.regular)
+                        .foregroundStyle(.black.opacity(0.8))
+                        .font(.system(size: 12))
+                    Text("SwiftUI has a number of styling protocols that allow us to define common styling for views such as Button, ProgressView, Toggle, and more. They all work by allowing us to centralize any number of modifiers that get a view looking the way we want it, and provide modifiers that let us apply the full set of customizations in a single line.")
+                        .foregroundStyle(.white)
+                        .font(.system(size: 10))
+                    Spacer()
+                    VStack(alignment: .center){
+                        Button("Mark as Complete"){
+                            
+                        }
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity,alignment: .center)
+                    .padding(10)
+                    .background(.red)
+                    .foregroundStyle(.white)
+                    .cornerRadius(12)
+                    Spacer()
+                    Spacer()
+                    
+                    
+                }
+                .padding(.leading)
+                .padding(.trailing)
+            }
+            
+        }// Vstack
+    }
+}
+
+struct DetailTaskRow: View {
     let label: String
     let value: String
     
@@ -77,28 +185,15 @@ struct DetailRow: View {
         HStack {
             Text(label)
                 .font(.caption)
-                .foregroundColor(.gray)
+                .foregroundColor(.black.opacity(0.8))
+            Spacer()
             Text(value)
                 .font(.caption)
                 .foregroundColor(.white)
         }
     }
 }
-struct MaintenanceDetails {
-    let make: String
-    let roNumber: String
-    let vin: String
-    let warningLights: String
-    let insurance: String
-    let malfunction: String
-}
+
 #Preview {
-    SegmentControlViewm(details: MaintenanceDetails(
-        make: "Toyota Camry (2020)",
-        roNumber: "70990",
-        vin: "70990",
-        warningLights: "Yes",
-        insurance: "No",
-        malfunction: "No"
-    ))
+    SegmentControlViewm()
 }
