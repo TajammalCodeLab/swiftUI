@@ -5,6 +5,7 @@ struct SegmentControlViewm: View {
         content
     }
     
+    
 }
 extension SegmentControlViewm {
     

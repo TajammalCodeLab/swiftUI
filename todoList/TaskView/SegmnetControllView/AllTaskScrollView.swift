@@ -14,7 +14,7 @@ struct AllTaskScrollView: View {
     let details: MaintenanceDetails
     
     var body: some View {
-        
+        ScrollView{
             LazyVStack(spacing: 10) {
                 ForEach(items2, id: \.0) { item in
                     HStack {
@@ -41,8 +41,6 @@ struct AllTaskScrollView: View {
                                         .foregroundStyle(.white)
                                 }
                             }
-                            
-                            
                             // MARK: details
                             VStack(alignment: .leading, spacing: 4) {
                                 HStack {
@@ -71,6 +69,7 @@ struct AllTaskScrollView: View {
                     .cornerRadius(10)
                 }// for each
             } // lazyvstack
+        }
         
     }
 }
@@ -98,7 +97,6 @@ struct MaintenanceDetails {
     let insurance: String
     let malfunction: String
 }
-
 #Preview {
     AllTaskScrollView(details: MaintenanceDetails(
         make: "Toyota Camry (2020)",

@@ -9,23 +9,23 @@ import SwiftUI
 
 struct SegmentControllView: View {
     
-    @State private var selectedIndex: Int = 0
+    @State private var selectedIndex: String = "In Progress"
     let titles: [String] = ["In Progress", "Completed", "Incomplete"]
     
     var body: some View {
         HStack(alignment: .center, spacing: 12) {
-            ForEach(titles.indices, id: \.self) { index in
-                Button(action: {
+            ForEach(titles , id: \.self) { index in
+                Button {
                     withAnimation(.easeInOut(duration: 0.3)) { // Smooth animation
                         selectedIndex = index
                     }
-                }) {
-                    Text(titles[index])
+                } label: {
+                    Text(index)
                         .font(.system(size: 14, weight: .medium))
-                        .foregroundColor(selectedIndex == index ? .white : .black)
+                        //.foregroundColor(selectedIndex == index ? .white : .black)
                         .padding()
                         .frame(width: 110, height: 55)
-                        .background(selectedIndex == index ? Color.red : Color.clear)
+                        //.background(selectedIndex == index ? Color.red : Color.clear)
                         .clipShape(RoundedRectangle(cornerRadius: 14))
                 }
                 .buttonStyle(PlainButtonStyle()) // Removes default button styling
